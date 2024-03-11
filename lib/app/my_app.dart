@@ -4,7 +4,8 @@ import 'package:empty_code/core/enums/connectivity_status.dart';
 import 'package:empty_code/core/translation/app_translation.dart';
 import 'package:empty_code/ui/shared/colors.dart';
 import 'package:empty_code/ui/shared/utils.dart';
-import 'package:empty_code/ui/views/splash_view/splash_view.dart';
+import 'package:empty_code/ui/views/details_post/details_post_view.dart';
+import 'package:empty_code/ui/views/home_post/home_allpost.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
               cursorColor: AppColors.grayColor, // لون المؤشر
             ),
           ),
-         home: SplashView())
+         home: PostHome())
           // home: SplashView()),
     );
     // home: IntroView());

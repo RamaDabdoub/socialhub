@@ -1,51 +1,58 @@
-
 import 'package:empty_code/ui/shared/colors.dart';
+import 'package:empty_code/ui/shared/utils.dart';
 import 'package:flutter/material.dart';
-
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final bool obscureText;
-  const CustomTextField(
-      {super.key,
-      required this.hintText,
-      this.controller,
-      this.validator,
-      required this.obscureText});
+  final double? boxsize;
+
+  const CustomTextField({
+    super.key,
+    required this.hintText,
+    this.controller,
+    this.validator,
+    this.boxsize,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return TextFormField(
-        // onChanged: (value) {
-        //   FormState.val
-        //   formKey.currentState!.validate()
-        // },
+    return Container(
+      width: screenWidth(1),
+      height:boxsize?? screenWidth(1.5 ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: AppColors.whiteColor,
+        border: Border.all(
+          color: AppColors.graydarkColor.withOpacity(0.5),
+          width: 2,
+        ),
+      ),
+      child: TextFormField(
         validator: validator,
         controller: controller,
-        obscureText: obscureText,
-        obscuringCharacter: '*',
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: AppColors.blackColor),
+        maxLines: null,
+        keyboardType: TextInputType.multiline,
         decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.grayColor, width: 2),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.transparent, width: 2),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.grayColor, width: 2),
-          ),
+          enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent, width: 2)),
           hintText: hintText,
           hintStyle: TextStyle(
-            color: Colors.white,
-            fontSize: size.width / 30,
+            color: AppColors.blackColor.withOpacity(0.3),
+            fontSize: screenWidth(25),
           ),
-          fillColor: AppColors.grayColor,
+          contentPadding: EdgeInsetsDirectional.only(start: screenWidth(30),top: screenWidth(30)),
+          fillColor: AppColors.whiteColor,
           filled: true,
-          contentPadding: EdgeInsets.symmetric(
-              vertical: size.width / 20, horizontal: size.width / 20),
-          errorStyle:
-              TextStyle(color: AppColors.lightblueColor, fontSize: size.width / 24),
-        ));
+          errorStyle: TextStyle(
+              color: AppColors.greenColor, fontSize: screenWidth(24)),
+        ),
+      ),
+    );
   }
 }

@@ -42,8 +42,8 @@ class Customtext extends StatelessWidget {
         break;
       case TextStyleType.SUBTITLE:
         result = TextStyle(
-            fontSize: screenWidth(22),
-            fontWeight: fontWeight,
+            fontSize: screenWidth(15),
+            fontWeight: fontWeight ?? FontWeight.bold,
             color: textColor);
         break;
       case TextStyleType.BODY:
